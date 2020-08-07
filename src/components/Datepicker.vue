@@ -14,7 +14,8 @@
       :inputClass="inputClass"
       :typeable="typeable"
       :clearButton="clearButton"
-      :clearButtonIcon="clearButtonIcon"
+      :clearButtonLabel="clearButtonLabel"
+      :clearButtonClass="clearButtonClass"
       :calendarButton="calendarButton"
       :calendarButtonIcon="calendarButtonIcon"
       :calendarButtonIconContent="calendarButtonIconContent"
@@ -136,7 +137,8 @@ export default {
     wrapperClass: [String, Object, Array],
     mondayFirst: Boolean,
     clearButton: Boolean,
-    clearButtonIcon: String,
+    clearButtonLabel: String,
+    clearButtonClass: String,
     calendarButton: Boolean,
     calendarButtonIcon: String,
     calendarButtonIconContent: String,
