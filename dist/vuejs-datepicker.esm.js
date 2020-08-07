@@ -424,7 +424,7 @@ var script = {
     inputClass: [String, Object, Array],
     clearButton: Boolean,
     clearButtonLabel: String,
-    clearButtonIcon: String,
+    clearButtonClass: String,
     calendarButton: Boolean,
     calendarButtonIcon: String,
     calendarButtonIconContent: String,
@@ -610,99 +610,81 @@ var __vue_render__ = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
-  return _c(
-    "div",
-    { class: { "input-group": _vm.bootstrapStyling } },
-    [
-      _vm.calendarButton
-        ? _c(
-            "span",
-            {
-              staticClass: "vdp-datepicker__calendar-button",
-              class: { "input-group-addon": _vm.bootstrapStyling },
-              style: { "cursor:not-allowed;": _vm.disabled },
-              on: { click: _vm.showCalendar }
-            },
-            [
-              _c(
-                "span",
-                { class: { "input-group-text": _vm.bootstrapStyling } },
-                [
-                  _c("i", { class: _vm.calendarButtonIcon }, [
-                    _vm._v(
-                      "\n        " +
-                        _vm._s(_vm.calendarButtonIconContent) +
-                        "\n        "
-                    ),
-                    !_vm.calendarButtonIcon
-                      ? _c("span", [_vm._v("…")])
-                      : _vm._e()
-                  ])
-                ]
-              )
-            ]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _c("input", {
-        ref: _vm.refName,
-        class: _vm.computedInputClass,
-        attrs: {
-          type: _vm.inline ? "hidden" : "text",
-          name: _vm.name,
-          id: _vm.id,
-          "open-date": _vm.openDate,
-          placeholder: _vm.placeholder,
-          "clear-button": _vm.clearButton,
-          disabled: _vm.disabled,
-          required: _vm.required,
-          readonly: !_vm.typeable,
-          autocomplete: "off"
-        },
-        domProps: { value: _vm.formattedValue },
-        on: {
-          click: _vm.showCalendar,
-          keyup: _vm.parseTypedDate,
-          blur: _vm.inputBlurred
-        }
-      }),
-      _vm._v(" "),
-      _vm.clearButtonLabel || _vm.clearButton
-        ? _c(
-            "span",
-            {
-              staticClass: "vdp-datepicker__clear-button",
-              class: { "input-group-addon": _vm.bootstrapStyling },
-              on: {
-                click: function($event) {
-                  return _vm.clearDate()
-                }
-              }
-            },
-            [
-              _c(
-                "span",
-                { class: { "input-group-text": _vm.bootstrapStyling } },
-                [
-                  _c("i", { class: _vm.clearButtonIcon }, [
-                    !_vm.clearButtonIcon ? _c("span", [_vm._v("×")]) : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _vm.clearButtonLabel
-                    ? _c("span", {
-                        domProps: { textContent: _vm._s(_vm.clearButtonLabel) }
-                      })
-                    : _vm._e()
-                ]
-              )
-            ]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _vm._t("afterDateInput")
-    ],
-    2
-  )
+  return _c("div", [
+    _c(
+      "div",
+      { class: { "input-group": _vm.bootstrapStyling } },
+      [
+        _vm.calendarButton
+          ? _c(
+              "span",
+              {
+                staticClass: "vdp-datepicker__calendar-button",
+                class: { "input-group-addon": _vm.bootstrapStyling },
+                style: { "cursor:not-allowed;": _vm.disabled },
+                on: { click: _vm.showCalendar }
+              },
+              [
+                _c(
+                  "span",
+                  { class: { "input-group-text": _vm.bootstrapStyling } },
+                  [
+                    _c("i", { class: _vm.calendarButtonIcon }, [
+                      _vm._v(
+                        "\n          " +
+                          _vm._s(_vm.calendarButtonIconContent) +
+                          "\n          "
+                      ),
+                      !_vm.calendarButtonIcon
+                        ? _c("span", [_vm._v("…")])
+                        : _vm._e()
+                    ])
+                  ]
+                )
+              ]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _c("input", {
+          ref: _vm.refName,
+          class: _vm.computedInputClass,
+          attrs: {
+            type: _vm.inline ? "hidden" : "text",
+            name: _vm.name,
+            id: _vm.id,
+            "open-date": _vm.openDate,
+            placeholder: _vm.placeholder,
+            "clear-button": _vm.clearButton,
+            disabled: _vm.disabled,
+            required: _vm.required,
+            readonly: !_vm.typeable,
+            autocomplete: "off"
+          },
+          domProps: { value: _vm.formattedValue },
+          on: {
+            click: _vm.showCalendar,
+            keyup: _vm.parseTypedDate,
+            blur: _vm.inputBlurred
+          }
+        }),
+        _vm._v(" "),
+        _vm._t("afterDateInput")
+      ],
+      2
+    ),
+    _vm._v(" "),
+    _vm.clearButton && _vm.clearButtonClass && _vm.clearButtonLabel
+      ? _c("div", {
+          class: _vm.clearButtonClass,
+          domProps: { textContent: _vm._s(_vm.clearButtonLabel) },
+          on: {
+            click: function($event) {
+              return _vm.clearDate()
+            }
+          }
+        })
+      : _vm._e()
+  ])
 };
 var __vue_staticRenderFns__ = [];
 __vue_render__._withStripped = true;

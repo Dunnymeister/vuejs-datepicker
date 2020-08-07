@@ -1,42 +1,37 @@
 <template>
-  <div :class="{'input-group' : bootstrapStyling}">
-    <!-- Calendar Button -->
-    <span v-if="calendarButton" class="vdp-datepicker__calendar-button" :class="{'input-group-addon' : bootstrapStyling}" @click="showCalendar" v-bind:style="{'cursor:not-allowed;' : disabled}">
-      <span :class="{'input-group-text' : bootstrapStyling}">
-        <i :class="calendarButtonIcon">
-          {{ calendarButtonIconContent }}
-          <span v-if="!calendarButtonIcon">&hellip;</span>
-        </i>
+  <div>
+    <div :class="{'input-group' : bootstrapStyling}">
+      <!-- Calendar Button -->
+      <span v-if="calendarButton" class="vdp-datepicker__calendar-button" :class="{'input-group-addon' : bootstrapStyling}" @click="showCalendar" v-bind:style="{'cursor:not-allowed;' : disabled}">
+        <span :class="{'input-group-text' : bootstrapStyling}">
+          <i :class="calendarButtonIcon">
+            {{ calendarButtonIconContent }}
+            <span v-if="!calendarButtonIcon">&hellip;</span>
+          </i>
+        </span>
       </span>
-    </span>
-    <!-- Input -->
-    <input
-      :type="inline ? 'hidden' : 'text'"
-      :class="computedInputClass"
-      :name="name"
-      :ref="refName"
-      :id="id"
-      :value="formattedValue"
-      :open-date="openDate"
-      :placeholder="placeholder"
-      :clear-button="clearButton"
-      :disabled="disabled"
-      :required="required"
-      :readonly="!typeable"
-      @click="showCalendar"
-      @keyup="parseTypedDate"
-      @blur="inputBlurred"
-      autocomplete="off">
+      <!-- Input -->
+      <input
+        :type="inline ? 'hidden' : 'text'"
+        :class="computedInputClass"
+        :name="name"
+        :ref="refName"
+        :id="id"
+        :value="formattedValue"
+        :open-date="openDate"
+        :placeholder="placeholder"
+        :clear-button="clearButton"
+        :disabled="disabled"
+        :required="required"
+        :readonly="!typeable"
+        @click="showCalendar"
+        @keyup="parseTypedDate"
+        @blur="inputBlurred"
+        autocomplete="off">
+      <slot name="afterDateInput"></slot>
+    </div>
     <!-- Clear Button -->
-    <span v-if="(clearButtonLabel || clearButton)" class="vdp-datepicker__clear-button" :class="{'input-group-addon' : bootstrapStyling}" @click="clearDate()">
-      <span :class="{'input-group-text' : bootstrapStyling}">
-        <i :class="clearButtonIcon">
-          <span v-if="!clearButtonIcon">&times;</span>
-        </i>
-        <span v-if="clearButtonLabel" v-text="clearButtonLabel"></span>
-      </span>
-    </span>
-    <slot name="afterDateInput"></slot>
+    <div v-if="clearButton && clearButtonClass && clearButtonLabel" v-bind:class="clearButtonClass" v-text="clearButtonLabel" v-on:click="clearDate()"></div>
   </div>
 </template>
 <script>
@@ -56,7 +51,7 @@ export default {
     inputClass: [String, Object, Array],
     clearButton: Boolean,
     clearButtonLabel: String,
-    clearButtonIcon: String,
+    clearButtonClass: String,
     calendarButton: Boolean,
     calendarButtonIcon: String,
     calendarButtonIconContent: String,
