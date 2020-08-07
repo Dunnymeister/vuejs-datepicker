@@ -1,7 +1,7 @@
 <template>
   <div :class="{'input-group' : bootstrapStyling}">
     <!-- Calendar Button -->
-    <span v-if="calendarButton" class="vdp-datepicker__calendar-button" :class="{'input-group-prepend' : bootstrapStyling}" @click="showCalendar" v-bind:style="{'cursor:not-allowed;' : disabled}">
+    <span v-if="calendarButton" class="vdp-datepicker__calendar-button" :class="{'input-group-addon' : bootstrapStyling}" @click="showCalendar" v-bind:style="{'cursor:not-allowed;' : disabled}">
       <span :class="{'input-group-text' : bootstrapStyling}">
         <i :class="calendarButtonIcon">
           {{ calendarButtonIconContent }}
@@ -28,11 +28,12 @@
       @blur="inputBlurred"
       autocomplete="off">
     <!-- Clear Button -->
-    <span v-if="clearButton && selectedDate" class="vdp-datepicker__clear-button" :class="{'input-group-append' : bootstrapStyling}" @click="clearDate()">
+    <span v-if="(clearButtonLabel || clearButton)" class="vdp-datepicker__clear-button" :class="{'input-group-addon' : bootstrapStyling}" @click="clearDate()">
       <span :class="{'input-group-text' : bootstrapStyling}">
         <i :class="clearButtonIcon">
           <span v-if="!clearButtonIcon">&times;</span>
         </i>
+        <span v-if="clearButtonLabel" v-text="clearButtonLabel">
       </span>
     </span>
     <slot name="afterDateInput"></slot>
@@ -54,6 +55,7 @@ export default {
     placeholder: String,
     inputClass: [String, Object, Array],
     clearButton: Boolean,
+    clearButtonLabel: String,
     clearButtonIcon: String,
     calendarButton: Boolean,
     calendarButtonIcon: String,
