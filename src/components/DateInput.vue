@@ -33,7 +33,7 @@
         <i :class="clearButtonIcon">
           <span v-if="!clearButtonIcon">&times;</span>
         </i>
-        <span v-if="clearButtonLabel" v-text="clearButtonLabel">
+        <span v-if="clearButtonLabel" v-text="clearButtonLabel"></span>
       </span>
     </span>
     <slot name="afterDateInput"></slot>
